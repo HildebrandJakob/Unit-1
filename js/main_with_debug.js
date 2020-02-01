@@ -7,7 +7,7 @@ function initialize(){
 function cities(){
 	//define two arrays for cities and population
 	var cityPop = [
-		{ 
+		{
 			city: 'Madison',
 			population: 233209
 		},
@@ -30,10 +30,10 @@ function cities(){
 
 	//append a header row to the table
 	$("table").append("<tr>");
-	
+
 	//add the "City" and "Population" columns to the header row
 	$("tr").append("<th>City</th><th>Population</th>");
-	
+
 	//loop to add a new row for each city
     for (var i = 0; i < cityPop.length; i++){
         //assign longer html strings to a variable
@@ -47,12 +47,13 @@ function cities(){
 };
 
 function addColumns(cityPop){
-    
+
     $('tr').each(function(i){
 
     	if (i == 0){
 
-    		$(this).apend('<th>City Size</th>');
+// append was missing a p
+    		$(this).append('<th>City Size</th>');
     	} else {
 
     		var citySize;
@@ -61,38 +62,42 @@ function addColumns(cityPop){
     			citySize = 'Small';
 
     		} else if (cityPop[i-1].population < 500000){
-    			citysize = 'Medium';
+    			citySize = 'Medium';
+					//Change citysize to citySize
 
     		} else {
     			citySize = 'Large';
     		};
 
-    		$this.append('<td' + citySize + '</td>');
+    		$(this).append('<td>' + citySize + '</td>');
+				//add parentheses around this
+				//add missing bracket to td
     	};
     });
 };
 
 function addEvents(){
 
-	$('#table').mouseover(function(){
-		
+	$('table').mouseover(function(){
+		//remove hashtag from table
+
 		var color = "rgb(";
 
 		for (var i=0; i<3; i++){
 
 			var random = Math.round(Math.random() * 255);
 
-			color += "random";
+			color += random;
 
 			if (i<2){
 				color += ",";
-			
+
 			} else {
 				color += ")";
 		};
 
 		$(this).css('color', color);
-	});
+	};
 
 	function clickme(){
 
@@ -100,7 +105,7 @@ function addEvents(){
 	};
 
 	$('table').on('click', clickme);
-};
+})};
 
 //call the initialize function when the document has loaded
 $(document).ready(initialize);
