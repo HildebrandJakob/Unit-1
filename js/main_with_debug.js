@@ -105,6 +105,8 @@ function addEvents(){
 	};
 
 	$('table').on('click', clickme);
+
+
 })};
 
 //call the initialize function when the document has loaded
